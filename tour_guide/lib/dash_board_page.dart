@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:study_on_flutter/detail_page.dart';
-import 'package:study_on_flutter/style/color.dart';
+import 'package:tour_guide/detail_page.dart';
+import 'package:tour_guide/style/color.dart';
 
 class DashBoardPage extends StatefulWidget {
 
@@ -11,13 +11,13 @@ class DashBoardPage extends StatefulWidget {
 
 class _DashBoardPageState extends State<DashBoardPage> {
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(height: 30,),
         Padding(
-          padding: EdgeInsets.all(35.0),
+          padding: EdgeInsets.symmetric(horizontal: 35, vertical: 60),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -51,22 +51,22 @@ class _DashBoardPageState extends State<DashBoardPage> {
             ],
           ),
         ),
-        SizedBox(height: 10,),
         Container(
-          height: MediaQuery.of(context).size.height - 250,
+          height: MediaQuery.of(context).size.height - 253,
           child: ListView(
             children: <Widget>[
-              _buildListItem('assets/vancouver.jpg', 'Canada', 'Vancouver', 'Explore the land of the freedom.'),
-              _buildListItem('assets/toronto.png', 'Canada', 'Toronto', 'Explore the land of the rising culture.')
+              _buildListItem('assets/vancouver.jpg', 'Canada', 'Vancouver', 'Explore the land of the freedom.','City Tour'),
+              _buildListItem('assets/toronto.png', 'Canada', 'Toronto', 'Explore the land of the freedom.','High Tour'),
+              _buildListItem('assets/montreal.jpg', 'Canada', 'Montreal', 'Explore the land of the freedom.','Towers'),
             ],
           ),
         )
       ],
     );
   }
-  _buildListItem(String imgPath, String country, String city, String description){
+  _buildListItem(String imgPath, String country, String city, String description, String bannerTitle){
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Stack(
         children: <Widget>[
           Container(
@@ -79,7 +79,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
               image: DecorationImage(
                 image: AssetImage(imgPath),
                 fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(Colors.black54, BlendMode.dstATop)
+                colorFilter: ColorFilter.mode(Colors.black87, BlendMode.dstATop)
               )
             ),
           ),
@@ -98,14 +98,14 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   ),
                   Text(city,
                     style: GoogleFonts.montserrat(
-                      fontSize: 20,
-                      textStyle: TextStyle(color: Colors.white54)
+                      fontSize: 25,
+                      textStyle: TextStyle(color: Colors.white)
                     ),
                   ),
                   Text(description,
                     style: GoogleFonts.montserrat(
                       fontSize: 15,
-                      textStyle: TextStyle(color: Colors.white54)
+                      textStyle: TextStyle(color: Colors.white)
                     ),
                   ),
                   SizedBox(
@@ -114,7 +114,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   InkWell(
                     onTap: (){
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => DetailsPage(imgPath: imgPath, title: city,)
+                        builder: (context) => DetailsPage(imgPath: imgPath, title: city, bannerTitle: bannerTitle,)
                       ));
                     },
                     child: Container(

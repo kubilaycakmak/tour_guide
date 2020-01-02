@@ -8,9 +8,9 @@ import 'style/color.dart';
 
 class DetailsPage extends StatefulWidget {
 
-  final imgPath, title;
+  final imgPath, title, dataSet, bannerTitle;
 
-  DetailsPage({this.imgPath, this.title});
+  DetailsPage({this.imgPath, this.title, this.dataSet, this.bannerTitle});
 
   @override
   _DetailsPageState createState() => _DetailsPageState();
@@ -115,7 +115,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
-                              image: AssetImage('assets/van-stanley.jpg'),
+                              image: AssetImage(widget.imgPath),
                               fit: BoxFit.cover,
                               colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken)
                             )
@@ -133,7 +133,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Stanley Tour',
+                                  Text(widget.bannerTitle,
                                   style: GoogleFonts.montserrat(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.bold,
@@ -197,7 +197,6 @@ class _DetailsPageState extends State<DetailsPage> {
                         _buildListItem('assets/stanley-walk.jpeg', 'Walking area', 'Free'),
                         _buildListItem('assets/stanley-walk.jpeg', 'Walking area', 'Free'),
                         _buildListItem('assets/stanley-walk.jpeg', 'Walking area', 'Free'),
-                        
                       ],
                     ),
                   )
@@ -269,4 +268,5 @@ class _DetailsPageState extends State<DetailsPage> {
       ),
     );
   }
+
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:study_on_flutter/style/color.dart';
-
+import 'package:tour_guide/person_page.dart';
+import 'package:tour_guide/style/color.dart';
 import 'dash_board_page.dart';
+import 'search_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -14,10 +15,10 @@ class _HomePageState extends State<HomePage> {
   var selectedItem = 0;
   List children = [
       DashBoardPage(),
-       DashBoardPage(),
-        DashBoardPage(),
-         DashBoardPage(),
+      SearchPage(),
+      PersonPage(),
   ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +27,10 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: colorDark,
         selectedItemColor: colorPink,
-        iconSize: 27,
+        iconSize: 30,
         currentIndex: selectedItem,
         unselectedLabelStyle: TextStyle(color: colorDark),
-        unselectedItemColor: colorGray,
+        unselectedItemColor: colorTransparent,
         onTap: (currentIndex){
           setState(() {
             selectedItem = currentIndex;
@@ -61,17 +62,6 @@ class _HomePageState extends State<HomePage> {
             )
           ),
           BottomNavigationBarItem(
-            backgroundColor: colorDark,
-            icon: Icon(Icons.camera_rear),
-            title: Container(
-              height: 5.0,
-              width: 5.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorPink
-              ),
-            )
-          ),BottomNavigationBarItem(
             backgroundColor: colorDark,
             icon: Icon(Icons.person_outline),
             title: Container(

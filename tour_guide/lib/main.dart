@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_on_flutter/home.dart';
+import 'package:tour_guide/home.dart';
 
 void main(){
   return runApp(MaterialApp(
